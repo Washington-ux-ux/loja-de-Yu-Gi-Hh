@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartas WL</title>
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="icon" type="image/x-icon" href="../imagens/favicon.ico">
+    
+</head>
+<body>
+
+    <!--O  login-->
+
+   <div class="login">
+    <h1>Faça o Login</h1>
+    <form action="">
+        <input type="text" placeholder="Usuario">
+        <input type="password" placeholder="Senha">
+        <button type="submit">Login</button>
+    </form>
+</div>
+
+    <!-- Já iniciar podendo escrever no usuário para fazer login -->
+
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            var userInput = document.querySelector('.login input[type="text"]');
+            if (userInput) {
+                userInput.focus();
+            }
+        });
+    </script>
+
+    <script src="../javascript/login.js"></script>
+</body>
+</html>

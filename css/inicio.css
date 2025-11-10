@@ -1,0 +1,538 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+}
+
+/* Estilos do Menu de Navegação */
+.nave {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+nav {
+  background: #ffffff;
+  border-bottom: none;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1000;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+nav::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #e11d48, #7c3aed, #0ea5e9);
+  background-size: 200% auto;
+  animation: gradient 8s linear infinite;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+main {
+  padding: 2rem 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #ffffff;
+}
+
+nav a {
+  color: #1a365d;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+nav a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #e11d48, #7c3aed);
+  transition: width 0.3s ease;
+  z-index: -1;
+}
+
+nav a:hover {
+  color: #1a365d;
+  background: #f8f9fa;
+  transform: translateY(-2px);
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+nav a:hover::before {
+  width: 100%;
+}
+
+/* Efeito de destaque no item ativo */
+nav a.active {
+  color: #1a365d;
+  font-weight: 600;
+  background: #f0f0f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+  
+  nav a {
+    display: block;
+    text-align: center;
+    padding: 0.75rem;
+  }
+}
+
+/* Estilos do Banner */
+.banner-container {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+  color: #1a365d;
+  margin-bottom: 2rem;
+}
+
+.banner-image {
+  position: relative;
+  width: 100%;
+  min-height: 350px; /* Altura mínima para garantir visibilidade */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner-image img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+}
+
+.banner-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.9);
+  color: #1a365d;
+  padding: 1rem;
+}
+
+.banner-content h1 {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  line-height: 1.2;
+}
+
+.banner-content p {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  margin: 0;
+  max-width: 800px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  opacity: 0.95;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .banner-image {
+    padding-bottom: 60%; /* Mais altura em telas menores */
+  }
+  
+  .banner-content {
+    padding: 1rem;
+  }
+  
+  .banner-content h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .banner-content p {
+    font-size: 1.1rem;
+  }
+}
+
+/* Estilos para os títulos das seções */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+    padding: 0.5rem 2rem;
+    color: #2c3e50;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    display: block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 4px;
+    background: linear-gradient(90deg, #e74c3c, #f39c12);
+    bottom: -5px;
+    left: 20%;
+    border-radius: 2px;
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
+/* Estilo específico para a seção Sobre Nós */
+.sobre-nos {
+    background-color: #ffffff;
+    border: 1px solid #e9ecef;
+    padding: 3rem 2rem;
+    margin: 3rem 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.sobre-conteudo {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.sobre-texto {
+    line-height: 1.8;
+    color: #333;
+}
+
+.sobre-texto h3 {
+    color: #2c3e50;
+    margin: 2rem 0 1rem;
+    font-size: 1.8rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.sobre-texto h3::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #e74c3c, #f39c12);
+    bottom: 0;
+    left: 0;
+}
+
+.sobre-texto ul {
+    margin: 1rem 0 2rem 2rem;
+    list-style-type: square;
+}
+
+.sobre-texto ul li {
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+.diferenciais {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.diferencial {
+    background-color: #ffffff;
+    color: #1a365d;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-bottom: 1px solid #e2e8f0;
+}
+
+
+
+.diferencial h4 {
+    color: #e74c3c;
+    margin-bottom: 0.8rem;
+    font-size: 1.2rem;
+}
+
+.diferencial p {
+    color: #666;
+    font-size: 1rem;
+    margin: 0;
+    text-align: left;
+}
+
+.chamada-acao {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+.btn-contato {
+    display: inline-block;
+    background: linear-gradient(90deg, #e74c3c, #f39c12);
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn-contato:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(90deg, #c0392b, #d35400);
+}
+
+/* Estilos do Carrossel */
+.carrossel-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 20px;
+    position: relative;
+    height: 500px; /* Altura fixa para o carrossel */
+}
+
+.carrossel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carrossel-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    transition: transform 1.5s ease-in-out;
+}
+
+.carrossel-item {
+    min-width: 100%;
+    height: 100%;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.carrossel-item a {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.carrossel-item img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.carrossel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    color: #333;
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.carrossel-btn:hover {
+    background-color: #fff;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carrossel-btn.prev {
+    left: 10px;
+}
+
+.carrossel-btn.next {
+    right: 10px;
+}
+
+.carrossel-indicators {
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    z-index: 10;
+}
+
+.indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background-color: #fff;
+    transform: scale(1.2);
+}
+
+/* Botões de navegação */
+.carrossel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 20px;
+    z-index: 10;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carrossel-btn.prev {
+    left: 10px;
+}
+
+.carrossel-btn.next {
+    right: 10px;
+}
+
+.carrossel-btn:hover {
+    background: rgba(0,0,0,0.8);
+}
+
+/* Indicadores */
+.carrossel-indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    z-index: 10;
+}
+
+.indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background-color: #fff;
+    transform: scale(1.2);
+}
