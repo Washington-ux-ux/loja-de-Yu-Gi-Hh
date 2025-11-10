@@ -10,22 +10,21 @@
 </head>
 <body>
 
-    <!--O  login-->
-
    <div class="login">
     <h1>Faça o Login</h1>
-    <form action="">
-        <input type="text" placeholder="Usuario">
-        <input type="password" placeholder="Senha">
+    <form id="login-form"> 
+        <input type="text" placeholder="Usuario" id="usuario">
+        <input type="password" placeholder="Senha" id="senha">
         <button type="submit">Login</button>
+        
+        <div id="mensagem-erro" style="color: red; margin-top: 10px;"></div>
     </form>
 </div>
 
-    <!-- Já iniciar podendo escrever no usuário para fazer login -->
-
     <script>
         window.addEventListener('DOMContentLoaded', function () {
-            var userInput = document.querySelector('.login input[type="text"]');
+            // Corrigido para buscar pelo ID
+            var userInput = document.getElementById('usuario'); 
             if (userInput) {
                 userInput.focus();
             }

@@ -1,5 +1,6 @@
-// javascript/login.js (NOVO ARQUIVO)
+// javascript/login.js
 
+// Corrigido: O 'submit' é no formulário, não no documento
 document.getElementById('login-form').addEventListener('submit', async function(event) {
     // Impede o formulário de recarregar a página
     event.preventDefault(); 
@@ -7,6 +8,9 @@ document.getElementById('login-form').addEventListener('submit', async function(
     const usuario = document.getElementById('usuario').value;
     const senha = document.getElementById('senha').value;
     const mensagemErro = document.getElementById('mensagem-erro');
+
+    // Limpa erros anteriores
+    mensagemErro.textContent = '';
 
     try {
         // 1. Envia os dados para o seu Back-End

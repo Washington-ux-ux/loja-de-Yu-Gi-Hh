@@ -1,0 +1,10 @@
+# Ignora a pasta de pacotes do Node
+node_modules/
+servidor/node_modules/
+
+# Ignora o arquivo do banco de dados (pode conter dados)
+banco.db
+servidor/banco.db
+
+# Arquivos de sistema operacional
+.DS_Store

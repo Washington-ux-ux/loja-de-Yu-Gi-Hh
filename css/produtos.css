@@ -17,12 +17,17 @@ body {
 nav {
   background: #ffffff;
   border-bottom: none;
-  padding: 1rem 1.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  padding: 0.75rem 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   position: relative;
   z-index: 1000;
   box-sizing: border-box;
   width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
 }
 
 nav::before {
@@ -47,11 +52,15 @@ nav ul {
   list-style: none;
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 1.5rem;
-  margin: 0;
-  padding: 0;
-  max-width: 1200px;
   margin: 0 auto;
+  padding: 0 1rem;
+  max-width: 1200px;
+  width: 100%;
+  position: relative;
+  flex-wrap: wrap;
+  min-height: 40px;
 }
 
 main {
@@ -62,17 +71,62 @@ main {
 }
 
 nav a {
-  color: #1a365d;
+  color: #1f2937;
   text-decoration: none;
-  font-weight: 500;
-  font-size: 1.1rem;
+  font-weight: 600;
   padding: 0.5rem 1rem;
   border-radius: 6px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
   z-index: 1;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  box-sizing: border-box;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #e11d48, #7c3aed);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+
+nav a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Estilo para o botão de login/registro */
+.login-btn {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.login-btn a {
+  background: linear-gradient(90deg, #e11d48, #7c3aed);
+  color: white !important;
+  padding: 0.5rem 1.5rem !important;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+}
+
+.login-btn a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(90deg, #be1a3e, #6d28d9);
 }
 
 nav a::before {
@@ -108,6 +162,27 @@ nav a.active {
 }
 
 /* Responsividade */
+@media (max-width: 992px) {
+  nav ul {
+    flex-wrap: wrap;
+    padding: 0.5rem;
+  }
+  
+  .login-btn {
+    position: static;
+    transform: none;
+    width: 100%;
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+  
+  .login-btn a {
+    display: inline-block;
+    width: auto;
+    padding: 0.5rem 1.5rem !important;
+  }
+}
+
 @media (max-width: 768px) {
   .nave {
     position: relative;
