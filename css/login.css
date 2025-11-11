@@ -78,3 +78,43 @@ button:hover {
 button:active {
     transform: translateY(1px);
 }
+
+/* Classe para esconder elementos */
+.hidden {
+    display: none;
+}
+
+/* Estilo para os links de "Registre-se" / "Faça login" */
+.toggle-link {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 14px;
+    color: #9ca3af; /* Um cinza claro */
+}
+
+.toggle-link a {
+    color: #4f46e5; /* Um azul/roxo */
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.toggle-link a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para as mensagens */
+.mensagem-erro {
+    color: #ef4444; /* Vermelho */
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
+    min-height: 1em; /* Reserva espaço para a mensagem */
+}
+
+.mensagem-sucesso {
+    color: #22c55e; /* Verde */
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
+    min-height: 1em;
+}

@@ -56,6 +56,63 @@ app.post('/login', (req, res) => {
     });
 });
 
+
+// server.js
+
+// ... (todo o código do app.post('/login', ...) deve estar aqui em cima) ...
+
+// 3. Rota de Login
+app.post('/login', (req, res) => {
+    // ... (seu código de login existente) ...
+});
+
+
+// 4. ROTA DE REGISTRO (NOVO)
+app.post('/registrar', (req, res) => {
+    const { usuario, senha } = req.body;
+
+    console.log(`Tentativa de registro para usuário: ${usuario}`);
+
+    // Validação simples no back-end
+    if (!usuario || !senha || senha.length < 6) {
+        return res.json({ 
+            sucesso: false, 
+            erro: 'Usuário ou senha inválidos (senha mín. 6 caracteres).' 
+        });
+    }
+
+    // 1. Criptografar a senha
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(senha, salt);
+
+    // 2. Inserir no banco de dados
+    const sql = `INSERT INTO usuarios (usuario, senha_hash) VALUES (?, ?)`;
+
+    db.run(sql, [usuario, hash], function(err) {
+        if (err) {
+            // Verifica se o erro é de "usuário já existe"
+            if (err.code === 'SQLITE_CONSTRAINT') {
+                console.log('Falha: Usuário já existe.');
+                return res.json({ sucesso: false, erro: 'Este nome de usuário já está em uso.' });
+            }
+            // Outros erros
+            console.error(err.message);
+            return res.status(500).json({ sucesso: false, erro: 'Erro interno do servidor.' });
+        }
+
+        // Sucesso
+        console.log(`Sucesso: Usuário ${usuario} criado com ID ${this.lastID}`);
+        return res.json({ sucesso: true });
+    });
+});
+
+
+// 5. Iniciar o servidor (este deve ser o final do arquivo)
+app.listen(port, () => {
+    // ... (seu código app.listen existente) ...
+});
+
+
 // 4. Iniciar o servidor
 app.listen(port, () => {
     console.log(`Servidor rodando em http://localhost:${port}`);

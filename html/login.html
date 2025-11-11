@@ -6,24 +6,45 @@
     <title>Cartas WL</title>
     <link rel="stylesheet" href="../css/login.css">
     <link rel="icon" type="image/x-icon" href="../imagens/favicon.ico">
-    
 </head>
 <body>
 
    <div class="login">
-    <h1>Faça o Login</h1>
+    
     <form id="login-form"> 
-        <input type="text" placeholder="Usuario" id="usuario">
-        <input type="password" placeholder="Senha" id="senha">
+        <h1>Faça o Login</h1>
+        
+        <input type="text" placeholder="Usuario" id="usuario" required>
+        <input type="password" placeholder="Senha" id="senha" required>
         <button type="submit">Login</button>
         
-        <div id="mensagem-erro" style="color: red; margin-top: 10px;"></div>
+        <div id="mensagem-erro-login" class="mensagem-erro"></div>
+        
+        <p class="toggle-link">
+            Não tem uma conta? <a href="#" id="link-registro">Registre-se</a>
+        </p>
     </form>
+
+    <form id="registro-form" class="hidden"> 
+        <h1>Crie sua Conta</h1>
+        
+        <input type="text" placeholder="Usuario" id="usuario-registro" required>
+        <input type="password" placeholder="Senha" id="senha-registro" required>
+        <input type="password" placeholder="Confirmar Senha" id="confirmar-senha" required>
+        <button type="submit">Registrar</button>
+        
+        <div id="mensagem-erro-registro" class="mensagem-erro"></div>
+        <div id="mensagem-sucesso-registro" class="mensagem-sucesso"></div>
+        
+        <p class="toggle-link">
+            Já tem uma conta? <a href="#" id="link-login">Faça login</a>
+        </p>
+    </form>
+
 </div>
 
     <script>
         window.addEventListener('DOMContentLoaded', function () {
-            // Corrigido para buscar pelo ID
             var userInput = document.getElementById('usuario'); 
             if (userInput) {
                 userInput.focus();
